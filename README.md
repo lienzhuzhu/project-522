@@ -1,1 +1,4 @@
-# project-522
+# CSE522 Project
+
+Tomson Li, Yifan Wang, Lien Zhu
+
