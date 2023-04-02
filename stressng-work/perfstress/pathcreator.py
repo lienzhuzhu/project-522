@@ -12,17 +12,32 @@ import shutil       # rm -rf functionality
 # Creates directory that holds data for all
 # invocations in one central directory
 #
-def mkdir_root_path(desired_root_path):
-    root_path = os.path.join(os.path.expanduser("~"), desired_root_path) 
+def mkdir_root_path():
+    root_path = os.path.join(os.path.expanduser("~"), "prelim-root") 
     if not os.path.exists(root_path):
         os.mkdir(root_path)
     return root_path
 
 
-# Create the experiment path using the provided label
-def mkdir_cd_experiment_path(desired_root_path, label):
-    root_path = mkdir_root_path(desired_root_path) # cd into root_path
-    experiment_path = os.path.join(root_path, label)
+# Creates directory specific for current invocation
+#
+def mkdir_cd_experiment_path(num_of_simultaneous_events, num_of_trials, events_input_file, workloads_input_file):
+    root_path = mkdir_root_path() # cd into root_path
+    events_input_filename = events_input_file.split('.')[0]
+    workloads_input_filename = workloads_input_file.split('.')[0]
+    path_string = str(num_of_simultaneous_events) + "_events-" + str(num_of_trials) + "_trials-" + events_input_filename + "_" + workloads_input_filename
+    experiment_path = os.path.join(root_path, path_string)
+    if os.path.exists(experiment_path):
+        shutil.rmtree(experiment_path)
+    os.mkdir(experiment_path)
+    os.chdir(experiment_path)
+    return experiment_path
+
+# Creates a simple experiment path that only specifies number of concurrent perf events
+def mkdir_cd_simple_experiment_path(num_of_simultaneous_events):
+    root_path = mkdir_root_path() # cd into root_path
+    path_string = str(num_of_simultaneous_events) + "_events"
+    experiment_path = os.path.join(root_path, path_string)
     if os.path.exists(experiment_path):
         shutil.rmtree(experiment_path)
     os.mkdir(experiment_path)

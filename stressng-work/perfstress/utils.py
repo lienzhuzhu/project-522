@@ -40,19 +40,19 @@ def parse_args():
 
     parser.add_argument('--scheduler', help='Scheduling policy to use. Default: "other". Options: "rr", "fifo", "deadline", "other"', type=str, default="other")
     parser.add_argument('--priority', help='Scheduling priority for this experiment. Default: 0. Note: Each policy supports different range of priorities', type=str, default="0")
-    parser.add_argument('--rootpath', help='Specify desired root path for all experiments. Must be within user\'s home directory', type=str, required=True)
-    parser.add_argument('--label', help="A label for this experiment to facilitate easier result processing", type=str, required=True)
 
     # perf specific arguments
     parser.add_argument('-p', '--perfversion', help='Version of perf to invoke. For embedded users.', type=str, default="perf")
     parser.add_argument('-e', '--eventsfile', help='Input file with desired events', type=str, required=True)
     parser.add_argument('-t', '--trials', help='Number of times to repeat perf invocation. Default is 10', type=int, default=10)
     parser.add_argument('--count', help='Number of events to count per perf invocation. Default is 1', type=int, default=1)
-    parser.add_argument('--perfcore', help='perf profiles these cpus only', type=str, default=all_cores) 
-    parser.add_argument('--simple', action='store_true', help='enable simplified event input file processing')
+    parser.add_argument('--perfcore', help='perf will only count on these cpus', type=str, default=all_cores) 
 
-    # SPEC CPU2017 specific arguments
-    parser.add_argument('-w', '--workloadsfile', help='Input file with desired workloads', type=str, required=True) 
+    # stress-ng specific arguments
+    parser.add_argument('--stresscore', help='Pin stress-ng workload on this list of comma separated list or hyphen denoted range of cores', type=str, default = all_cores)
+    parser.add_argument('--stresscpu', help='Number of stress-ng cpu stressors. Default is "1"', type=str, default="1")
+    parser.add_argument('--stressversion', help='Version of stress-ng to use. For embedded users.', type=str, default="stress-ng")
+    parser.add_argument('-w', '--workloadsfile', help='Input file with desired workloads', type=str, required=True) # with Intel benchmark, might need to handle required arguments differently
 
 
     args = parser.parse_args()

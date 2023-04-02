@@ -11,7 +11,6 @@ from utils import *
 from inputprocessor import *
 from pathcreator import *
 from statcalc import *
-import subprocess
 
 from ExperimentResults import *
 from EventStringData import *
@@ -19,34 +18,21 @@ from EventStringWorkloadData import *
 from DataPoint import *
 
 
-# Preps the command to invoke perf on SPEC CPU2017
+# Preps the command to invoke perf on stress-ng
 # Expected txt file name format: "event_index_--workload_trial.txt"
 # Returns path to the <output_file>.txt
 #
-def run_perf(experiment_obj, event_string_workload_obj, event_string_index):
-    # set up PATH env var to contain runcpu binary
-    path_restore = os.getcwd()
-    os.chdir(os.path.join(os.path.expanduser('~'), 'cpu2017'))
-    subprocess.run("bash -c 'source shrc'", shell=True)
-    cpu2017_bin = os.path.join(os.path.expanduser('~'), 'cpu2017/bin')
-    env = os.environ.copy()
-    if 'PATH' in env:
-        env['PATH'] = f"{cpu2017_bin}:{env['PATH']}"  # use ':' as path separator on Unix/Linux
-    else:
-        env['PATH'] = cpu2017_bin
-    os.chdir(path_restore)
-
-    workload_name = event_string_workload_obj.workload
+def run_perf(experiment_obj, string_workload_obj, event_string_index):
+    workload_name = string_workload_obj.workload.split()[0].strip() # parses "--workload #ops" into "--workload"
     datafile = str(event_string_index) + "_" + workload_name + ".txt" # create output file name
     
     chrt_cmd_str = "sudo chrt --" + experiment_obj.scheduler + " " + experiment_obj.priority 
-    perf_cmd_str = experiment_obj.perfversion + " stat -o " + datafile + " -e " + event_string_workload_obj.eventstring + " -x ," + " -C " + experiment_obj.perfcore
-    workload_arg_str = os.path.join(os.path.expanduser('~'), "cpu2017/bin/runcpu") + " " + workload_name + " --noreportable --iterations 1 --deletework --tune base --action onlyrun"
+    perf_cmd_str = experiment_obj.perfversion + " stat -o " + datafile + " -e " + string_workload_obj.eventstring + " -x ," + " -C " + experiment_obj.perfcore
+    workload_arg_str = experiment_obj.stressversion + " -q" + " --taskset " + experiment_obj.stresscore + " --cpu " + experiment_obj.stresscpu + " " + string_workload_obj.workload 
 
     full_cmd = chrt_cmd_str + " " + perf_cmd_str + " " + workload_arg_str
 
-    # os.system(full_cmd) # run command, creating output text file for trial
-    subprocess.run(full_cmd, env=env, shell=True)
+    os.system(full_cmd) # run command, creating output text file for trial
     return datafile 
 
 
@@ -67,16 +53,10 @@ def main():
     all_events, all_workloads = process_input(args.eventsfile, args.workloadsfile)
     check_args(args.count, all_events)
 
-
-    # This conditional flow conducts simple processing of events if args.simple is passed
-    # !!!CRITICAL!!! for saving time and making sure the program can actually run on the machine's resources
-    if args.simple:
-        processed_events_arr = simple_process_events_arr(all_events, args.count)
-    else:
-        processed_events_arr = process_events_arr(all_events, args.count)
+    # processed_events_arr = process_events_arr(all_events, args.count)
+    processed_events_arr = simple_process_events_arr(all_events, args.count)
 
     experiment_obj = ExperimentResults(
-        args.label,
         args.trials, 
         args.count, 
         args.eventsfile, 
@@ -86,10 +66,13 @@ def main():
         args.scheduler,
         args.priority,
         args.perfversion,
-        args.perfcore
+        args.perfcore,
+        args.stressversion,
+        args.stresscore,
+        args.stresscpu
     )
 
-    experiment_path = mkdir_cd_experiment_path(args.rootpath, experiment_obj.label)
+    experiment_path = mkdir_cd_simple_experiment_path(experiment_obj.num_of_events_together)
 
     touch_key_file(experiment_path, experiment_obj.event_strings)
 
@@ -115,9 +98,7 @@ def main():
     for trial in range(experiment_obj.num_of_trials):
         trial_path = mkdir_cd_trial_path(experiment_path, trial)
         print("Running Trial", trial)
-        print()
         run_trial(experiment_obj, trial_path)
-        print()
         print("Trial", trial, "Finished")
         os.chdir(experiment_path)
 
@@ -130,7 +111,6 @@ def main():
     print(experiment_obj.num_of_events_together, "events were counted concurrently each perf invocation")
     print("Find results at", experiment_path + "/results.csv")
     print()
-
 
 if __name__ == "__main__":
     main()

@@ -58,5 +58,5 @@ def simple_process_events_arr(all_events_arr, num_of_simultaneous_events):
         event_string += combo[index] + ","
     event_string += combo[num_of_simultaneous_events - 1]
     processed_events_arr.append(event_string)
-
+    
     return processed_events_arr
