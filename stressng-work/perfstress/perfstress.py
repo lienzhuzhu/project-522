@@ -78,11 +78,10 @@ def main():
 
     print()
     print("Experiment Running...")
-
-
     # Initialize data structures to reduce code complexity later
     for event_string in experiment_obj.event_strings:
         event_string_obj = EventStringData(event_string)
+       
         experiment_obj.EventStringData_arr.append(event_string_obj)
         for workload in experiment_obj.workloads:
             string_workload_obj = EventStringWorkloadData(event_string, workload)

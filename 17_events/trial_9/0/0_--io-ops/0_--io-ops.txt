@@ -1,0 +1,19 @@
+# started on Mon Apr 24 16:27:25 2023
+
+29237637,,branch-misses,7544965057,35.18,3.16,of all branches
+924662533,,branch-instructions,7544978616,35.18,,
+4221428201,,bus-cycles,7544807308,35.18,,
+14818922,,cache-misses,7544747733,35.18,1.169,of all cache refs
+1267812909,,cache-references,7560604296,35.25,,
+8419316837,,cpu-cycles,8824722263,41.14,,
+7146345432,,instructions,8840424876,41.22,0.85,insn per cycle
+14529645,,L1-dcache-load-misses,8848493843,41.25,1.13,of all L1-dcache hits
+1283522350,,L1-dcache-loads,8848594980,41.26,,
+13961857,,L1-icache-load-misses,8848541754,41.26,0.30,of all L1-icache hits
+4671417809,,L1-icache-loads,8848004340,41.25,,
+28752962,,branch-load-misses,8847945187,41.25,,
+1451413468,,branch-loads,7584028559,35.36,,
+153968,,dTLB-load-misses,7584015598,35.36,,
+60610,,iTLB-load-misses,7584038200,35.36,,
+1294065028,,br_immed_retired,7569381676,35.29,,
+29946871,,br_mis_pred,7553495906,35.22,,

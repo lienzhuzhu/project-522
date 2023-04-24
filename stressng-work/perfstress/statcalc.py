@@ -24,14 +24,16 @@ EVENT_INDEX = 2
 def parse_counts_from_file(datafile, string_workload_obj):
 
     datapoint_arr_index = 0
+
     with open(datafile, 'r') as f:
         for line in f:
             if line[0] == "#" or not line.strip() or "<not counted>" in line:
                 continue
 
             line_of_data = line.split(',')
+       
             curr_datapoint = string_workload_obj.DataPoint_arr[datapoint_arr_index]
-
+       
             _count = int( line_of_data[COUNT_INDEX].replace(',', '') )
             curr_datapoint.counts.append(_count)
             curr_datapoint.eventstring = string_workload_obj.eventstring
