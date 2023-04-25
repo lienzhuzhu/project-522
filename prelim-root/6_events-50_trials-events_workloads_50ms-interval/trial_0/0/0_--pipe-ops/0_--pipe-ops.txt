@@ -1,0 +1,117 @@
+# started on Mon Apr 24 20:33:08 2023
+
+#           time             counts unit events
+     0.044300495             171341      branch-misses                                               
+     0.044300495           16148633      bus-cycles                                                  
+     0.044300495              93935      cache-misses              #    1.250 % of all cache refs    
+     0.044300495            7515190      cache-references                                            
+     0.044300495           32372673      cpu-cycles                                                  
+     0.044300495           19780978      instructions              #    0.61  insn per cycle         
+     0.095378983             234574      branch-misses                                               
+     0.095378983          100675153      bus-cycles                                                  
+     0.095378983             812023      cache-misses              #    2.628 % of all cache refs    
+     0.095378983           54283836      cache-references                                            
+     0.095378983          201483856      cpu-cycles                                                  
+     0.095378983          204726749      instructions              #    1.75  insn per cycle         
+     0.145812318             316497      branch-misses                                               
+     0.145812318          105667919      bus-cycles                                                  
+     0.145812318             719487      cache-misses              #    1.841 % of all cache refs    
+     0.145812318           55467382      cache-references                                            
+     0.145812318          211395039      cpu-cycles                                                  
+     0.145812318          210084448      instructions              #    1.42  insn per cycle         
+     0.196295079             336432      branch-misses                                               
+     0.196295079          105688255      bus-cycles                                                  
+     0.196295079             557263      cache-misses              #    1.325 % of all cache refs    
+     0.196295079           50996126      cache-references                                            
+     0.196295079          211534179      cpu-cycles                                                  
+     0.196295079          193085005      instructions              #    1.18  insn per cycle         
+     0.247275859             371598      branch-misses                                               
+     0.247275859          106974913      bus-cycles                                                  
+     0.247275859             371334      cache-misses              #    0.912 % of all cache refs    
+     0.247275859           35320863      cache-references                                            
+     0.247275859          214112185      cpu-cycles                                                  
+     0.247275859          133577151      instructions              #    0.77  insn per cycle         
+     0.284220082             337304      branch-misses                                               
+     0.284220082           76526945      bus-cycles                                                  
+     0.284220082             175133      cache-misses              #    0.479 % of all cache refs    
+     0.284220082           15715120      cache-references                                            
+     0.284220082          152822945      cpu-cycles                                                  
+     0.284220082           58721535      instructions              #    0.34  insn per cycle         
+     0.335578517             465708      branch-misses                                               
+     0.335578517          107607955      bus-cycles                                                  
+     0.335578517             216465      cache-misses              #    0.633 % of all cache refs    
+     0.335578517           20158982      cache-references                                            
+     0.335578517          215663203      cpu-cycles                                                  
+     0.335578517           75896333      instructions              #    0.43  insn per cycle         
+     0.387399606             562477      branch-misses                                               
+     0.387399606          108284901      bus-cycles                                                  
+     0.387399606             208221      cache-misses              #    0.647 % of all cache refs    
+     0.387399606           18159278      cache-references                                            
+     0.387399606          216559830      cpu-cycles                                                  
+     0.387399606           68332885      instructions              #    0.38  insn per cycle         
+     0.439278507             551344      branch-misses                                               
+     0.439278507          108375588      bus-cycles                                                  
+     0.439278507             163068      cache-misses              #    0.538 % of all cache refs    
+     0.439278507           14957056      cache-references                                            
+     0.439278507          216558792      cpu-cycles                                                  
+     0.439278507           56139332      instructions              #    0.30  insn per cycle         
+     0.471365876             360092      branch-misses                                               
+     0.471365876           65745915      bus-cycles                                                  
+     0.471365876              62142      cache-misses              #    0.223 % of all cache refs    
+     0.471365876            6124329      cache-references                                            
+     0.471365876          131210528      cpu-cycles                                                  
+     0.471365876           22408698      instructions              #    0.12  insn per cycle         
+     0.522551394             595984      branch-misses                                               
+     0.522551394          107003886      bus-cycles                                                  
+     0.522551394             108367      cache-misses              #    0.412 % of all cache refs    
+     0.522551394           10288898      cache-references                                            
+     0.522551394          214332015      cpu-cycles                                                  
+     0.522551394           38429218      instructions              #    0.21  insn per cycle         
+     0.573936808             660626      branch-misses                                               
+     0.573936808          107410910      bus-cycles                                                  
+     0.573936808             135633      cache-misses              #    0.541 % of all cache refs    
+     0.573936808           12124815      cache-references                                            
+     0.573936808          215047163      cpu-cycles                                                  
+     0.573936808           45364071      instructions              #    0.24  insn per cycle         
+     0.625103421             607946      branch-misses                                               
+     0.625103421          105053880      bus-cycles                                                  
+     0.625103421             104424      cache-misses              #    0.437 % of all cache refs    
+     0.625103421            9506478      cache-references                                            
+     0.625103421          209483173      cpu-cycles                                                  
+     0.625103421           35366201      instructions              #    0.19  insn per cycle         
+     0.633364689              98882      branch-misses                                               
+     0.633364689           15399762      bus-cycles                                                  
+     0.633364689              15508      cache-misses              #    0.070 % of all cache refs    
+     0.633364689            1758001      cache-references                                            
+     0.633364689           31273202      cpu-cycles                                                  
+     0.633364689            6089051      instructions              #    0.03  insn per cycle         
+     0.684844477             620018      branch-misses                                               
+     0.684844477          101124717      bus-cycles                                                  
+     0.684844477              99654      cache-misses              #    0.465 % of all cache refs    
+     0.684844477            8862707      cache-references                                            
+     0.684844477          201818465      cpu-cycles                                                  
+     0.684844477           32961970      instructions              #    0.18  insn per cycle         
+     0.735833643             567677      branch-misses                                               
+     0.735833643           99667793      bus-cycles                                                  
+     0.735833643             106917      cache-misses              #    0.520 % of all cache refs    
+     0.735833643            7938136      cache-references                                            
+     0.735833643          199442902      cpu-cycles                                                  
+     0.735833643           29394666      instructions              #    0.16  insn per cycle         
+     0.778479561             477509      branch-misses                                               
+     0.778479561           80044592      bus-cycles                                                  
+     0.778479561              79043      cache-misses              #    0.400 % of all cache refs    
+     0.778479561            6603679      cache-references                                            
+     0.778479561          159837455      cpu-cycles                                                  
+     0.778479561           24220102      instructions              #    0.14  insn per cycle         
+     0.829347946             542715      branch-misses                                               
+     0.829347946           83185008      bus-cycles                                                  
+     0.829347946             113875      cache-misses              #    0.593 % of all cache refs    
+     0.829347946            9773891      cache-references                                            
+     0.829347946          166521759      cpu-cycles                                                  
+     0.829347946           36043116      instructions              #    0.20  insn per cycle         
+     0.856304189             188755      branch-misses                                               
+     0.856304189           29415163      bus-cycles                                                  
+     0.856304189              87142      cache-misses              #    0.468 % of all cache refs    
+     0.856304189            8275345      cache-references                                            
+     0.856304189           58534381      cpu-cycles                                                  
+     0.856304189           29561511      instructions              #    0.17  insn per cycle         
